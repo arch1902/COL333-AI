@@ -1,0 +1,20 @@
+﻿Automated Nurse Rostering System 
+                                                                Aman Gupta - 2019CS10673
+                                                                Arpit Chauhan - 2019CS10332
+
+
+Part A: Rostering with Constraints
+-------------------------------------------------------
+In this problem, we have N nurses enrolled at a hospital and we need to prepare a roster for the nursing staff for D days at a time given certain constraints.​​ Hence, this becomes a Constraint Satisfaction Problem (CSP) with NxD variables and domain [M, A, E, R]. We use Backtracking Search to generate a roster that satisfies all the constraints.
+We assign values to all the nurses starting from Day 1 to Day D. For any particular day, we try to consider the Most Constrained Variable (Minimum Remaining Values) first by reordering the nurses such that nurses that are not rested yet that week and are preceded by M or E shift are considered first.
+While assigning value to a variable, we start by the Least Constrained Value so as to leave maximum flexibility for subsequent assignments. If a nurse has not been rested yet, we assign R to it, if possible i.e. if the number of rests for that day has not been exhausted yet.
+
+
+
+
+Part B: Incorporating Preferences
+---------------------------------------------------------
+
+
+In this case, we are provided with certain soft constraints along with the previous hard constraints. We aim to maximize the number of morning and evening shifts provided to the senior nurses. We observed that a solution remains valid even after interchanging the order of nurses in the final roster. Hence a naive way of getting a possible better arrangement is by rearranging the rows of solution obtained in part(a). 
+Another approach was to first reach a satisfiable solution using CSP backtracking combined with some heuristics to incorporate the soft constraints and then continue performing backtrack search around that solution to obtain even better solutions if possible within the allotted time. We have made an ensemble of the above two approaches in order to obtain the best solution within the time constraint given.
